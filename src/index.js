@@ -1,4 +1,3 @@
-let errors = 0;
 
 const listOfEasyPuzzles = {
     easy1: [[9, ' ', ' ', 2, ' ', ' ', 4, ' ', ' '],
@@ -33,23 +32,23 @@ const listOfEasyPuzzles = {
 ]
 }
 
-const listOfMediumPuzzles = {
-    medium1: [[]
-],
-    medium2: [[]
-],
-    medium3: [[]
-]
-}
+// const listOfMediumPuzzles = {
+//     medium1: [[]
+// ],
+//     medium2: [[]
+// ],
+//     medium3: [[]
+// ]
+// }
 
-const listOfHardPuzzles = {
-    hard1: [[]
-],
-    hard2: [[]
-],
-    hard3: [[]
-]
-}
+// const listOfHardPuzzles = {
+//     hard1: [[]
+// ],
+//     hard2: [[]
+// ],
+//     hard3: [[]
+// ]
+// }
 
 const solutionListOfEasyPuzzles = {
     solutionEasy1: [[9, 7, 6, 2, 1, 5, 4, 3, 8],
@@ -84,20 +83,27 @@ const solutionListOfEasyPuzzles = {
 ]
 }
 
-const solutionListOfMediumPuzzles = {
-    solutionMedium1: [[]
-],
-    solutionMedium2: [[]
-],
-    solutionMedium3: [[]
-]
-}
+// const solutionListOfMediumPuzzles = {
+//     solutionMedium1: [[]
+// ],
+//     solutionMedium2: [[]
+// ],
+//     solutionMedium3: [[]
+// ]
+// }
 
-const solutionListOfHardPuzzles = {
-    solutionHard1: [[]
-],
-    solutionHard2: [[]
-],
-    solutionHard3: [[]
-]
-}
+// const solutionListOfHardPuzzles = {
+//     solutionHard1: [[]
+// ],
+//     solutionHard2: [[]
+// ],
+//     solutionHard3: [[]
+// ]
+// }
+
+const sudokuGame = new SudokuGame(squares);
+
+window.addEventListener ('load', (event) => {
+    startGame();
+});
+
