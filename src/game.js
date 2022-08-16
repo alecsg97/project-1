@@ -45,8 +45,8 @@ function startGame() {
         for (let y = 0; y < 0; y++) {
             let square = document.createElement('div');
             square.id = x.toString() + '-' + y.toString();
-            if (easy1[[x]][[y]] != '') {
-                square.innerText = easy1[[x]][[y]];
+            if (easy1[x][y] != '') {
+                square.innerText = easy1[x][y];
                 square.classList.add('first-square');
             }
             if (x === 2 || x === 5) {
