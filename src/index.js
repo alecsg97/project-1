@@ -101,9 +101,7 @@ const solutionListOfEasyPuzzles = {
 // ]
 // }
 
-const sudokuGame = new SudokuGame(squares);
+const sudokuGame = new SudokuGame();
 
-window.addEventListener ('load', (event) => {
-    startGame();
-});
+
 
