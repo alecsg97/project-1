@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(204, 204, 204);
+    background-color: rgb(249, 249, 249);
     padding: 0;
     margin: 0;
     text-align: center;
@@ -18,58 +18,77 @@ nav a {
     align-items: center;
 }
 
-#error-counter {
+h3 {
+    display: flex;
+    width: 70vw;
+    justify-content: center;
+    font-size: 30px;
+    margin: 0 auto;
+}
+
+p {
+    display: flex;
+    width: 70vw;
+    font-size: 20px;
+    margin: 0 auto;
+}
+
+#errors {
     color: red;
 }
 
-#sudoku-board {
-    background-color: yellow;
+#board {
     display: flex;
     flex-wrap: wrap;
-    margin: auto;
-    width: 32rem;
-    height: 32rem;
+    margin: 0 auto;
+    width: 450px;
+    height: 450px;
 }
 
-#solution-numbers{
-    display: flex;
-    width: 32rem;
-    height: 50px;
-    flex-wrap: wrap;
-    margin: auto;
-}
-
-.number{
+.tile {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 46px;
-    height: 46px;
+    width: 48px; 
+    height: 48px;
+    border: 1px solid lightgray;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#solutionNums {
+    display: flex;
+    flex-wrap: wrap;
+    width: 450px;
+    height: 50px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px; 
+    height: 44px;
     border: 1px solid black;
     margin: 2px;
-}
-
-.square {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    border: 1px solid silver;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .number-selected {
     background-color: gray;
 }
 
-.first-square{
-    background-color: blanchedalmond;
+.tile-start {
+    background-color: whitesmoke;
 }
 
-.x-line{
+.horizontal-line {
     border-bottom: 1px solid black;
 }
 
-.y-line{
+.vertical-line {
     border-right: 1px solid black;
 }

@@ -1,90 +1,97 @@
-
-let numberPicked = null;
-let squarePicked = null;
+let numSelected = null;
+let tileSelected = null;
 let errors = 0;
 
-let easy1 = [
-    [9, ' ', ' ', 2, ' ', ' ', 4, ' ', ' '],
-    [' ', 3, 2, ' ', 4, ' ', ' ', ' ', ' '],
-    [' ', 4, ' ', 8, ' ', ' ', ' ', ' ', 7],
-    [' ', ' ', 7, ' ', 5, ' ', ' ', ' ', 9],
-    [' ', ' ', 1, 7, ' ', 2, 3, ' ', ' '],
-    [3, ' ', ' ', ' ', 8, ' ', 1, 7, ' '],
-    [5, ' ', ' ', ' ', ' ', 9, ' ', 8, ' '],
-    [' ', ' ', ' ', ' ', 2, 8, 5, 4, ' '],
-    [' ', ' ', 8, ' ', ' ', ' ', ' ', ' ', 1]
+let board = [
+    "9--2--4--",
+    "-32-4----",
+    "-4-8----7",
+    "--7-5---9",
+    "--17-23--",
+    "3---8-17-",
+    "5----9-8-",
+    "----2854-",
+    "--8-----1"
 ]
 
-let solutionEasy1 = [
-    [9, 7, 6, 2, 1, 5, 4, 3, 8],
-    [8, 3, 2, 9, 4, 7, 6, 1, 5],
-    [1, 4, 5, 8, 6, 3, 9, 2, 7],
-    [4, 2, 7, 3, 5, 1, 8, 6, 9],
-    [6, 8, 1, 7, 9, 2, 3, 5, 4],
-    [3, 5, 9, 4, 8, 6, 1, 7, 2],
-    [5, 1, 4, 6, 7, 9, 2, 8, 3],
-    [7, 9, 3, 1, 2, 8, 5, 4, 6],
-    [2, 6, 8, 5, 3, 4, 7, 9, 1]
+let solution = [
+    "976215438",
+    "832947615",
+    "145863927",
+    "427351869",
+    "681792354",
+    "359486172",
+    "514679283",
+    "793128546",
+    "268534791"
 ]
 
 window.addEventListener('load', () => {
     startGame();
 })
 
+function selectLevel() {
+    let buttonSelect = document.getElementById('btn-light');
+    document.addEventListener('click', selectLevel);
+    buttonSelect.classList.add('selected');
+}
+
 function startGame() {
     for (let i = 1; i <= 9; i++) {
-        let number = document.createElement('div');
-        number.id = i;
+        let number = document.createElement("div");
+        number.id = i
         number.innerText = i;
-        number.addEventListener('click', pickNumber);
-        number.classList.add('number');
-        document.getElementById('solution-numbers').appendChild(number);
+        number.addEventListener("click", selectNumber);
+        number.classList.add("number");
+        document.getElementById("solutionNums").appendChild(number);
     }
 
     for (let x = 0; x < 9; x++) {
-        for (let y = 0; y < 0; y++) {
-            let square = document.createElement('div');
-            square.id = x.toString() + '-' + y.toString();
-            if (easy1[x][y] != '') {
-                square.innerText = easy1[x][y];
-                square.classList.add('first-square');
+        for (let y = 0; y < 9; y++) {
+            let tile = document.createElement("div");
+            tile.id = x.toString() + "-" + y.toString();
+            if (board[x][y] != "-") {
+                tile.innerText = board[x][y];
+                tile.classList.add("tile-start");
             }
-            if (x === 2 || x === 5) {
-                square.classList.add('x-line');
+            if (x == 2 || x == 5) {
+                tile.classList.add("horizontal-line");
             }
-            if (y === 2 || y === 5) {
-                square.classList.add('y-line');
+            if (y == 2 || y == 5) {
+                tile.classList.add("vertical-line");
             }
-            square.addEventListener('click', pickSquare);
-            square.classList.add('square');
-            document.getElementById('sudoku-board').append(square);
+            tile.addEventListener("click", selectTile);
+            tile.classList.add("tile");
+            document.getElementById("board").append(tile);
         }
     }
 }
 
-function pickNumber(){
-    if (numberPicked != null) {
-        numberPicked.classList.remove("number-selected");
-    }
-    numberPicked = this;
-    numberPicked.classList.add("number-selected");
+function selectNumber(){
+    if (numSelected != null) {
+        numSelected.classList.remove("number-selected");
+        }
+        numSelected = this;
+        numSelected.classList.add("number-selected");
 }
 
-function pickSquare() {
-    if (numberPicked) {
-        if (this.innerText != '') {
+function selectTile() {
+    if (numSelected) {
+        if (this.innerText != "") {
             return;
-        }
-
-        let grid = this.id.split('-');
+        }        
+        let grid = this.id.split("-"); 
         let x = parseInt(grid[0]);
         let y = parseInt(grid[1]);
 
-        if (solutionEasy1[x][y] === numberPicked.id) {
-            this.innerText = numberPicked.id;
+        if (solution[x][y] == numSelected.id) {
+            this.innerText = numSelected.id;
         } else {
             errors += 1;
-            document.getElementById('error-counter').innerText = errors;
+            document.getElementById("errors").innerText = errors;
+        }
+        if (errors === 20) {
+            alert `you have lost, try again`
         }
     }
 }

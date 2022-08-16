@@ -101,7 +101,7 @@ const solutionListOfEasyPuzzles = {
 // ]
 // }
 
-const sudokuGame = new SudokuGame();
+
 
 
 

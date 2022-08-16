@@ -9,27 +9,27 @@
 </head>
     <nav>
         <div id="navigation-links">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Instructions</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="instructions.html">Instructions</a>
         </div>
     </nav>
     <body>
         <h1 id="page-name">Sudoku</h1> 
         
         <div id="level-options">
-            <label class="btn-light">Beginner</label>
-            <label class="btn-light">Intermediate</label>
-            <label class="btn-light">Advanced</label>
+            <button class="btn-light">Beginner</button>
+            <button class="btn-light">Intermediate</button>
+            <button class="btn-light">Advanced</button>
         </div>
         <br>
     <label id="minutes">00</label>:<label id="seconds">00</label>
 
-    <h2 id="error-counter">0</h2>
+    <h2 id="errors">0</h2>
     <br>
-    <div id="sudoku-board">
+    <div id="board">
     </div>
-    <div id="solution-numbers">        
+    <div id="solutionNums">        
     </div>
 
     <script src="./src/game.js"></script>
