@@ -30,10 +30,34 @@ window.addEventListener('load', () => {
     startGame();
 })
 
+function startTimer(duration, display) {
+    let timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    let timerMinutes = 60 * 18,
+        display = document.querySelector('#time');
+    startTimer(timerMinutes, display);
+};
+
+
 function selectLevel() {
-    let buttonSelect = document.getElementById('btn-light');
-    document.addEventListener('click', selectLevel);
-    buttonSelect.classList.add('selected');
+    // let buttonSelect = document.getElementById('btn-light');
+    // document.addEventListener('click', selectLevel);
+    // buttonSelect.classList.add('selected');
 }
 
 function startGame() {
@@ -91,7 +115,7 @@ function selectTile() {
             document.getElementById("errors").innerText = errors;
         }
         if (errors === 20) {
-            alert `you have lost, try again`
+            alert `You have lost, better luck next time`
         }
     }
 }
