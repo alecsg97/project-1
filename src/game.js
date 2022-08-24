@@ -48,7 +48,7 @@ function startTimer(duration, display) {
 }
 
 window.onload = function () {
-    let timerMinutes = 60 * 18,
+    let timerMinutes = 60 * 15,
         display = document.querySelector('#time');
     startTimer(timerMinutes, display);
 };
