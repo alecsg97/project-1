@@ -14,6 +14,31 @@ let board = [
     "--8-----1"
 ]
 
+let boardMid = [
+    "9--2--4--",
+    "--2-4----",
+    "-4-8----7",
+    "--7-5---9",
+    "--17--3--",
+    "3---8-17-",
+    "5----9-8-",
+    "----2-54-",
+    "--8-----1"
+]
+
+let boardHard = [
+    "9--2--4--",
+    "--2-4----",
+    "-4------7",
+    "--7-5---9",
+    "---7--3--",
+    "3---8-1--",
+    "5----9-8-",
+    "----2-5--",
+    "--8-----1"
+]
+
+
 let solution = [
     "976215438",
     "832947615",
@@ -26,9 +51,8 @@ let solution = [
     "268534791"
 ]
 
-window.addEventListener('load', () => {
-    startGame();
-})
+
+
 
 function startTimer(duration, display) {
     let timer = duration, minutes, seconds;
@@ -53,12 +77,6 @@ window.onload = function () {
     startTimer(timerMinutes, display);
 };
 
-
-function selectLevel() {
-    // let buttonSelect = document.getElementById('btn-light');
-    // document.addEventListener('click', selectLevel);
-    // buttonSelect.classList.add('selected');
-}
 
 function startGame() {
     for (let i = 1; i <= 9; i++) {
@@ -120,20 +138,94 @@ function selectTile() {
     }
 }
 
+function startGameMedium() {
+    for (let i = 1; i <= 9; i++) {
+        let number = document.createElement("div");
+        number.id = i
+        number.innerText = i;
+        number.addEventListener("click", selectNumber);
+        number.classList.add("number");
+        document.getElementById("solutionNums").appendChild(number);
+    }
+
+    for (let x = 0; x < 9; x++) {
+        for (let y = 0; y < 9; y++) {
+            let tile = document.createElement("div");
+            tile.id = x.toString() + "-" + y.toString();
+            if (boardMid[x][y] != "-") {
+                tile.innerText = boardMid[x][y];
+                tile.classList.add("tile-start");
+            }
+            if (x == 2 || x == 5) {
+                tile.classList.add("horizontal-line");
+            }
+            if (y == 2 || y == 5) {
+                tile.classList.add("vertical-line");
+            }
+            tile.addEventListener("click", selectTile);
+            tile.classList.add("tile");
+            document.getElementById("board").append(tile);
+        }
+    }
+}
+
+function startGameHard() {
+    for (let i = 1; i <= 9; i++) {
+        let number = document.createElement("div");
+        number.id = i
+        number.innerText = i;
+        number.addEventListener("click", selectNumber);
+        number.classList.add("number");
+        document.getElementById("solutionNums").appendChild(number);
+    }
+
+    for (let x = 0; x < 9; x++) {
+        for (let y = 0; y < 9; y++) {
+            let tile = document.createElement("div");
+            tile.id = x.toString() + "-" + y.toString();
+            if (boardHard[x][y] != "-") {
+                tile.innerText = boardHard[x][y];
+                tile.classList.add("tile-start");
+            }
+            if (x == 2 || x == 5) {
+                tile.classList.add("horizontal-line");
+            }
+            if (y == 2 || y == 5) {
+                tile.classList.add("vertical-line");
+            }
+            tile.addEventListener("click", selectTile);
+            tile.classList.add("tile");
+            document.getElementById("board").append(tile);
+        }
+    }
+}
+
 document.getElementById('btn-clear').onclick = function () {
     location.reload();
 }
 
 document.getElementById('btn-beginner').onclick = function () {
-
+    startGame();
 }
 
 document.getElementById('btn-intermediate').onclick = function () {
-    
+    startGameMedium();
+    if (!startGame) {
+        return
+    }
 }
 
 document.getElementById('btn-advanced').onclick = function () {
-    
+    startGameHard();
+    if (!startGame) {
+        return
+    }
+}
+
+function checkForWin() {
+    if(board === solution){
+        alert `You are the winner`
+    }
 }
 
 
