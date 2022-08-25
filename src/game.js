@@ -120,6 +120,22 @@ function selectTile() {
     }
 }
 
+document.getElementById('btn-clear').onclick = function () {
+    location.reload();
+}
+
+document.getElementById('btn-beginner').onclick = function () {
+
+}
+
+document.getElementById('btn-intermediate').onclick = function () {
+    
+}
+
+document.getElementById('btn-advanced').onclick = function () {
+    
+}
+
 
     
 
