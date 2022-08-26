@@ -67,6 +67,8 @@ function startTimer(duration, display) {
 
         if (--timer < 0) {
             timer = duration;
+        } else if (timer === 0) {
+            alert `You've ran out of time, try again`
         }
     }, 1000);
 }
@@ -105,6 +107,7 @@ function startGame() {
             tile.addEventListener("click", selectTile);
             tile.classList.add("tile");
             document.getElementById("board").append(tile);
+
         }
     }
 }
@@ -200,6 +203,14 @@ function startGameHard() {
     }
 }
 
+function checkForAnswer() {
+    if (tile.innerText != "") {
+        alert `you won`
+    } else {
+        alert `youre not done yet, keep playing`
+    }
+}
+
 document.getElementById('btn-clear').onclick = function () {
     location.reload();
 }
@@ -222,13 +233,9 @@ document.getElementById('btn-advanced').onclick = function () {
     }
 }
 
-function checkForWin() {
-    if(board === solution){
-        alert `You are the winner`
-    }
+document.getElementById('btn-check').onclick = function () {
+    checkForAnswer();
 }
-
-
     
 
     
