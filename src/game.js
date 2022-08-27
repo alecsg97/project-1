@@ -140,7 +140,7 @@ function selectTile() {
         if (errors === 20) {
             alert `You have lost, better luck next time`
         }
-        if (numPicked === 54) {
+        if (numPicked === 52) {
             alert `Great job! You won!`
         }
     }
@@ -170,9 +170,34 @@ function startGameMedium() {
             if (y == 2 || y == 5) {
                 tile.classList.add("vertical-line");
             }
-            tile.addEventListener("click", selectTile);
+            tile.addEventListener("click", selectTileMedium);
             tile.classList.add("tile");
             document.getElementById("board").append(tile);
+        }
+    }
+}
+
+function selectTileMedium() {
+    if (numSelected) {
+        if (this.innerText != "") {
+            return;
+        }        
+        let grid = this.id.split("-"); 
+        let x = parseInt(grid[0]);
+        let y = parseInt(grid[1]);
+
+        if (solution[x][y] == numSelected.id) {
+            this.innerText = numSelected.id;
+            numPicked += 1;
+        } else {
+            errors += 1;
+            document.getElementById("errors").innerText = errors;
+        }
+        if (errors === 20) {
+            alert `You have lost, better luck next time`
+        }
+        if (numPicked === 57) {
+            alert `Great job! You won!`
         }
     }
 }
@@ -201,18 +226,43 @@ function startGameHard() {
             if (y == 2 || y == 5) {
                 tile.classList.add("vertical-line");
             }
-            tile.addEventListener("click", selectTile);
+            tile.addEventListener("click", selectTileHard);
             tile.classList.add("tile");
             document.getElementById("board").append(tile);
         }
     }
 }
 
+function selectTileHard() {
+    if (numSelected) {
+        if (this.innerText != "") {
+            return;
+        }        
+        let grid = this.id.split("-"); 
+        let x = parseInt(grid[0]);
+        let y = parseInt(grid[1]);
+
+        if (solution[x][y] == numSelected.id) {
+            this.innerText = numSelected.id;
+            numPicked += 1;
+        } else {
+            errors += 1;
+            document.getElementById("errors").innerText = errors;
+        }
+        if (errors === 20) {
+            alert `You have lost, better luck next time`
+        }
+        if (numPicked === 61) {
+            alert `Great job! You won!`
+        }
+    }
+}
+
 function checkForAnswer() {
-    if (numPicked > 54) {
-        alert `you won`
+    if (numPicked > 52) {
+        alert `You Won`
     } else {
-        alert `youre not done yet, keep playing`
+        alert `You're not done yet, keep playing`
     }
 }
 
