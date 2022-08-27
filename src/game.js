@@ -1,6 +1,7 @@
 let numSelected = null;
 let tileSelected = null;
 let errors = 0;
+let numPicked = 0;
 
 let board = [
     "9--2--4--",
@@ -131,12 +132,16 @@ function selectTile() {
 
         if (solution[x][y] == numSelected.id) {
             this.innerText = numSelected.id;
+            numPicked += 1;
         } else {
             errors += 1;
             document.getElementById("errors").innerText = errors;
         }
         if (errors === 20) {
             alert `You have lost, better luck next time`
+        }
+        if (numPicked === 54) {
+            alert `Great job! You won!`
         }
     }
 }
@@ -204,7 +209,7 @@ function startGameHard() {
 }
 
 function checkForAnswer() {
-    if (tile.innerText != "") {
+    if (numPicked > 54) {
         alert `you won`
     } else {
         alert `youre not done yet, keep playing`
