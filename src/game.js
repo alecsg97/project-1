@@ -259,8 +259,12 @@ function selectTileHard() {
 }
 
 function checkForAnswer() {
-    if (numPicked > 52) {
-        alert `You Won`
+    if (numPicked === 0) {
+        alert `You haven't started, why are you checking`
+    } else if (numPicked > 40) {
+        alert `You're almost done, keep going`
+    } else if (numPicked > 28) {
+        alert `Halfwaaaaay there`
     } else {
         alert `You're not done yet, keep playing`
     }
